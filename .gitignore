@@ -1,0 +1,14 @@
+.DS_Store
+._*
+__MACOSX/
+*.ipa
+*.tipa
+*.dSYM/
+*.xcarchive/
+*.swp
+*.bak
+*.log
+*.ips
+.build/
+build/
+DerivedData/

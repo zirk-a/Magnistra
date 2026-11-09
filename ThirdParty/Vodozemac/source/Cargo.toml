@@ -1,0 +1,18 @@
+[package]
+name = "vodozemac-ios5-bridge"
+version = "0.3.0"
+edition = "2021"
+publish = false
+[lib]
+name = "vodozemac_ios5_bridge"
+crate-type = ["staticlib", "rlib"]
+[dependencies]
+vodozemac = "=0.11.0"
+serde_json = "=1.0.154"
+[profile.release]
+opt-level = 2
+lto = false
+codegen-units = 64
+panic = "abort"
+debug = 0
+incremental = false

@@ -1,0 +1,59 @@
+{
+  "format_version": 1,
+  "contract_set": "2026-10-06-posts-r2r4",
+  "features": {
+    "profile": [
+      {
+        "id": "web_graphql_primary",
+        "doc_id": "28036671149327607",
+        "friendly_name": "PolarisProfilePageContentQuery",
+        "variables": {
+          "enable_integrity_filters": true,
+          "render_surface": "PROFILE",
+          "__relay_internal__pv__PolarisCannesGuardianExperienceEnabledrelayprovider": true,
+          "__relay_internal__pv__PolarisCASB976ProfileEnabledrelayprovider": false,
+          "__relay_internal__pv__PolarisWebSchoolsEnabledrelayprovider": false,
+          "__relay_internal__pv__PolarisRepostsConsumptionEnabledrelayprovider": false,
+          "__relay_internal__pv__PolarisShortDramaEnabledrelayprovider": false
+        }
+      }
+    ],
+    "comments": [
+      {
+        "id": "web_graphql_primary_2026_10_06",
+        "doc_id": "28428885330094742",
+        "friendly_name": "PolarisPostCommentsPaginationQuery",
+        "variables": {
+          "__relay_internal__pv__PolarisIsLoggedInrelayprovider": true,
+          "before": null,
+          "after": null,
+          "first": 10,
+          "last": null,
+          "sort_order": "popular"
+        }
+      },
+      {
+        "id": "web_graphql_primary",
+        "doc_id": "6974885689225067",
+        "friendly_name": "PolarisPostCommentsPaginationQuery",
+        "variables": {
+          "before": null,
+          "after": null,
+          "first": 50,
+          "last": null,
+          "sort_order": "popular"
+        }
+      }
+    ],
+    "activity_post": [
+      {
+        "id": "web_graphql_primary",
+        "doc_id": "27128499623469141",
+        "friendly_name": "PolarisPostRootQuery",
+        "variables": {
+          "__relay_internal__pv__PolarisAIGMMediaWebLabelEnabledrelayprovider": false
+        }
+      }
+    ]
+  }
+}
