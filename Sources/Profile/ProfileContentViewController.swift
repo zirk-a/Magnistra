@@ -338,12 +338,13 @@ final class MagnistraProfileViewController:
         super.viewDidLayoutSubviews()
         unifiedLoadingBand.layout(on: view)
 
-        scrollView.frame = view.bounds
+        scrollView.frame = MagnistraTabletLayout.frame(
+            in: view.bounds, top: 0.0, height: view.bounds.height)
 
         let width =
             max(
                 1.0,
-                view.bounds.size.width
+                scrollView.bounds.size.width
             )
 
         let side: CGFloat = 10.0

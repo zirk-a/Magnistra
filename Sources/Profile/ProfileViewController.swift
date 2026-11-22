@@ -254,9 +254,10 @@ final class ProfileViewController:
         super.viewDidLayoutSubviews()
         unifiedLoadingBand.layout(on: view)
         if !rootTabHeaderScroll.managesViewport {
-            scrollView.frame = view.bounds
+            scrollView.frame = MagnistraTabletLayout.frame(
+                in: view.bounds, top: 0.0, height: view.bounds.height)
         }
-        let width = max(1.0, view.bounds.size.width)
+        let width = max(1.0, scrollView.bounds.size.width)
         let side: CGFloat = 10.0
         let avatarSize: CGFloat = 72.0
 

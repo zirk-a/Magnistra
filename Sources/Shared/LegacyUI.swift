@@ -1501,3 +1501,22 @@ func magnistraUserInitiatedPagination(_ scroll: UIScrollView) -> Bool {
     return pullBeyondBottom >= 18.0 && upwardFingerPull <= -18.0
 }
 
+
+
+// TABLET_R1: iPad uses a centered, bounded content canvas. On iPhone this
+// returns the original full-width frame; no networking or post model changes.
+enum MagnistraTabletLayout {
+    static var isPad: Bool {
+        return UIDevice.current.userInterfaceIdiom == .pad
+    }
+
+    static func contentWidth(_ width: CGFloat) -> CGFloat {
+        return isPad ? min(width, 520.0) : width
+    }
+
+    static func frame(in bounds: CGRect, top: CGFloat, height: CGFloat) -> CGRect {
+        let width = contentWidth(bounds.width)
+        return CGRect(x: floor(max(0.0, (bounds.width - width) * 0.5)),
+                      y: top, width: width, height: height)
+    }
+}

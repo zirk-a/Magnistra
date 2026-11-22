@@ -50,9 +50,9 @@ final class MagnistraRootTabHeaderScrollBehavior: NSObject {
         guard active, let table = table, let owner = owner else { return }
         let bounds = owner.bounds
         let originalY = originalFrame?.origin.y ?? 0.0
-        let rect = CGRect(x: 0.0, y: originalY - height,
-                          width: bounds.width,
-                          height: bounds.height - originalY + height)
+        let rect = MagnistraTabletLayout.frame(
+            in: bounds, top: originalY - height,
+            height: bounds.height - originalY + height)
         if table.frame != rect { table.frame = rect }
     }
 
@@ -729,9 +729,10 @@ final class ExploreViewController:
         super.viewDidLayoutSubviews()
         unifiedLoadingBand.layout(on: view)
         if magnistraSavedGrid {
-            scrollView.frame = view.bounds
-            statusLabel.frame = CGRect(x: 20.0, y: 35.0,
-                width: max(1.0, view.bounds.width - 40.0), height: 50.0)
+            scrollView.frame = MagnistraTabletLayout.frame(
+                in: view.bounds, top: 0.0, height: view.bounds.height)
+            statusLabel.frame = CGRect(x: scrollView.frame.minX + 20.0, y: 35.0,
+                width: max(1.0, scrollView.bounds.width - 40.0), height: 50.0)
             layoutGrid()
             return
         }
@@ -743,18 +744,18 @@ final class ExploreViewController:
             CGFloat = 44.0
 
         if !rootTabHeaderScroll.managesViewport {
-            scrollView.frame = CGRect(x: 0.0, y: contentY,
-                                      width: width,
-                                      height: max(1.0, view.bounds.height - contentY))
+            scrollView.frame = MagnistraTabletLayout.frame(
+                in: view.bounds, top: contentY,
+                height: max(1.0, view.bounds.height - contentY))
         }
 
         statusLabel.frame =
             CGRect(
-                x: 20.0,
+                x: scrollView.frame.minX + 20.0,
                 y: contentY + 35.0,
                 width: max(
                     1.0,
-                    width - 40.0
+                    scrollView.bounds.width - 40.0
                 ),
                 height: 50.0
             )
@@ -765,8 +766,8 @@ final class ExploreViewController:
                 42.0
 
         if !rootTabHeaderScroll.managesViewport {
-            searchBarHost.frame = CGRect(x: 0.0, y: 0.0,
-                                         width: view.bounds.width, height: 44.0)
+            searchBarHost.frame = MagnistraTabletLayout.frame(
+                in: view.bounds, top: 0.0, height: 44.0)
             searchBar.frame = searchBarHost.bounds
         }
 

@@ -424,8 +424,8 @@ final class DirectViewController:
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
 
-        tableView.frame =
-            view.bounds
+        tableView.frame = MagnistraTabletLayout.frame(
+            in: view.bounds, top: 0.0, height: view.bounds.height)
     }
 
     @objc private func refreshTapped() {

@@ -193,7 +193,8 @@ final class MagnistraExploreFeedViewController:
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         unifiedLoadingBand.layout(on: view)
-        tableView.frame = view.bounds
+        tableView.frame = MagnistraTabletLayout.frame(
+            in: view.bounds, top: 0.0, height: view.bounds.height)
     }
 
     override func viewDidAppear(

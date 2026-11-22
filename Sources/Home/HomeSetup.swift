@@ -65,14 +65,14 @@ extension HomeViewController {
     func configureTable() {
         tableView =
             UITableView(
-                frame: view.bounds,
+                frame: MagnistraTabletLayout.frame(
+                    in: view.bounds, top: 0.0, height: view.bounds.height),
                 style: .plain
             )
 
-        tableView.autoresizingMask = [
-            .flexibleWidth,
-            .flexibleHeight
-        ]
+        tableView.autoresizingMask = MagnistraTabletLayout.isPad
+            ? [.flexibleHeight]
+            : [.flexibleWidth, .flexibleHeight]
 
         tableView.dataSource = self
         tableView.delegate = self
@@ -97,7 +97,7 @@ extension HomeViewController {
                     x: 0.0,
                     y: 0.0,
                     width:
-                        view.bounds.size.width,
+                        tableView.bounds.size.width,
                     height: 38.0
                 )
             )
@@ -123,18 +123,17 @@ extension HomeViewController {
         statusLabel =
             UILabel(
                 frame: CGRect(
-                    x: 24.0,
+                    x: tableView.frame.minX + 24.0,
                     y: 34.0,
                     width:
-                        view.bounds.size.width -
+                        tableView.bounds.size.width -
                         48.0,
                     height: 70.0
                 )
             )
 
-        statusLabel.autoresizingMask = [
-            .flexibleWidth
-        ]
+        statusLabel.autoresizingMask = MagnistraTabletLayout.isPad
+            ? [] : [.flexibleWidth]
 
         statusLabel.backgroundColor =
             UIColor.clear
@@ -160,6 +159,8 @@ extension HomeViewController {
 
     func positionHomeStatusBelowStories() {
         var frame = statusLabel.frame
+        frame.origin.x = tableView.frame.minX + 24.0
+        frame.size.width = max(1.0, tableView.bounds.width - 48.0)
         frame.origin.y = tableView.tableHeaderView === storyTray
             ? storyTray.bounds.height + 34.0 : 34.0
         statusLabel.frame = frame

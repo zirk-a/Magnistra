@@ -9,3 +9,5 @@
 #include "opus_bridge.h"
 #include "GridFastDecode.h"
 #import "JSONKitBridge.h"
+
+#include "HomeGraphQLTransport.h"

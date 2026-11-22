@@ -29,12 +29,13 @@ final class MagnistraPostHeaderScrollBehavior: NSObject {
     private let barVisibleMask = CAShapeLayer()
     private let hiddenHitArea = MagnistraHiddenHeaderHitArea()
     private var active = false
+    var managesViewport: Bool { return active }
 
     private func layoutTable() {
         guard active, let table = table, let owner = owner else { return }
         let bounds = owner.bounds
-        let rect = CGRect(x: 0.0, y: -height, width: bounds.width,
-                          height: bounds.height + height)
+        let rect = MagnistraTabletLayout.frame(
+            in: bounds, top: -height, height: bounds.height + height)
         if table.frame != rect { table.frame = rect }
     }
 
@@ -169,7 +170,10 @@ final class MagnistraPostHeaderScrollBehavior: NSObject {
         if let feed = table {
             let oldY = feed.contentOffset.y
             if let inset = oldInset { feed.contentInset = inset }
-            if let owner = owner { feed.frame = owner.bounds }
+            if let owner = owner {
+                feed.frame = MagnistraTabletLayout.frame(
+                    in: owner.bounds, top: 0.0, height: owner.bounds.height)
+            }
             feed.autoresizingMask = oldAutoresizing
             feed.clipsToBounds = oldTableClips
             feed.contentOffset = CGPoint(x: feed.contentOffset.x,

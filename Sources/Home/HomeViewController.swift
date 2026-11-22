@@ -119,7 +119,12 @@ final class HomeViewController:
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         unifiedLoadingBand.layout(on: view)
+        if !postHeaderScroll.managesViewport {
+            tableView.frame = MagnistraTabletLayout.frame(
+                in: view.bounds, top: 0.0, height: view.bounds.height)
+        }
         postHeaderScroll.restoreViewportAfterOwnerLayout()
+        positionHomeStatusBelowStories()
     }
 
     override func viewDidAppear(

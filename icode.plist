@@ -11,9 +11,9 @@
 	<key>BundleIdentifier</key>
 	<string>com.zirka.magnistra</string>
 	<key>BundleShortVersionString</key>
-	<string>0.1</string>
+	<string>0.1.1</string>
 	<key>BundleVersion</key>
-	<string>1</string>
+	<string>2</string>
 	<key>CSources</key>
 	<array>
 		<string>Sources/InstagramTransport.c</string>
@@ -72,6 +72,7 @@
 		<string>Sources/TransferQR.c</string>
 		<string>Sources/TransferReceiver.c</string>
 		<string>Sources/PrivateState.c</string>
+		<string>Sources/HomeGraphQLTransport.c</string>
 	</array>
 	<key>DevelopmentRegion</key>
 	<string>en</string>
@@ -270,6 +271,7 @@
 		<string>Sources/Networking/ExploreParsing.swift</string>
 		<string>Sources/Networking/ExploreTags.swift</string>
 		<string>Sources/Networking/Feed.swift</string>
+		<string>Sources/Networking/HomeGraphQLAdapter.swift</string>
 		<string>Sources/Networking/FeedDiagnostics.swift</string>
 		<string>Sources/Networking/FeedPostBuilder.swift</string>
 		<string>Sources/Networking/ImageCache.swift</string>
@@ -349,6 +351,7 @@
 	<key>UIDeviceFamily</key>
 	<array>
 		<integer>1</integer>
+		<integer>2</integer>
 	</array>
 	<key>ObjectiveCArchiveLoading</key>
 	<true/>
